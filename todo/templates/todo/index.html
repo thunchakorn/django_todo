@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+
+<title>django todo</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+{% endblock head %}
+
+{% block content %}
+<h1>Django Todo</h1>
+
+{% if user.is_authenticated %}
+<p><a href="#">My Task</a></p>
+<p><a href="#">My Page</a></p>
+<p><a href="{% url 'logout' %}?next={% url 'todo:index' %}">Logout</a></p>
+{% else %}
+<p>Please <a href="{% url 'login' %}?next={% url 'todo:index' %}">Login</a> or <a href="#">Sign up</a></p>
+{% endif %}
+
+{% endblock content %}
