@@ -1,1 +1,4 @@
-app_name = 'todo'
+app_name = "todo"
+
+urlpatterns = [
+]
