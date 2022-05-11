@@ -2,11 +2,11 @@ from django.test import TestCase
 from django.contrib.auth.models import User
 from django.utils.timezone import now
 
-from todo.models import Priority, Todo, Comment, Following, Participant
+from todo.models import Priority, Todo  # ,Comment, Following, Participant
 
 from datetime import timedelta
 
-# Create your tests here.
+
 class TodoTest(TestCase):
     def setUp(self):
         self.user1 = User.objects.create_user(username="testuser1", password="12345")
