@@ -1,11 +1,10 @@
-from time import time
 from django.views import View
 from django.shortcuts import render
-from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils import timezone
 from django.http import JsonResponse
 from todo.models import Todo
+
 
 class TodoList(LoginRequiredMixin, View):
 
@@ -30,7 +29,6 @@ class TodoList(LoginRequiredMixin, View):
         else:
             data = queryset.values()
             return JsonResponse({"todo_list": list(queryset)})
-
 
 
 class MainView(View):
