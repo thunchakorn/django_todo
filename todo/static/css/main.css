@@ -1,0 +1,16 @@
+.todo {
+    background-color: rgba(3, 66, 109, 0.923);
+    border-radius: 1em;
+    max-width: 50%;
+    justify-content: center;
+    padding: 1em;
+    width: fit-content;
+    margin: 1em auto;
+    color: white
+}
+
+.todo:hover {
+    background-color: rgba(28,110,164,0.28);
+    cursor: pointer;
+    color: rgb(39, 39, 39)
+}

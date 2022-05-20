@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<title>ToDoDelete</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+{% endblock head %}
+
+{% block content %}
+<h1>Delete Thing</h1>
+
+<p>Are you sure you want to delete the todo: {{ todo }}?</p>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <input type="submit" value="Yes, delete.">
+  <input type="submit" value="Cancel" onclick="window.location.href='{% url 'todo:mytodo' %}';return false;">
+</form>
+{% endblock %}

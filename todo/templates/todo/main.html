@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+
+<title>django todo</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+{% endblock head %}
+
+{% block content %}
+<h1>Django Todo</h1>
+
+{% if user.is_authenticated %}
+<div>
+    <h2>Hello, {{ user.username|capfirst }}</h2>
+</div>
+<div>
+    <h3>Today is <span id="now-date">{{ now.date }}</span></h3>
+</div>
+<div>
+    <span>Todo due:</span>
+    <select name="due-select" id="due-select" onchange="showTodolist()">
+        <option value="today">Today</option>
+        <option value="week">This week</option>
+    </select>
+</div>
+
+<div id="todo-list">
+</div>
+
+<!-- Todo 
+1. followinng
+2. add Todo (create)
+3. my Todo (all Todo List)
+-->
+
+
+<p>
+    <a href="{% url 'todo:mytodo' %}">My Todo</a>
+    <a href="{% url 'logout' %}?next={% url 'todo:main' %}">Logout</a>
+</p>
+{% else %}
+
+<p>Please <a href="{% url 'login' %}?next={% url 'todo:main' %}">Login</a> or <a href="#">Sign up</a></p>
+{% endif %}
+
+{% endblock content %}
+
+{% block script %}
+<script src="{% static 'js/main.js' %}"></script>
+
+{% endblock script %}
