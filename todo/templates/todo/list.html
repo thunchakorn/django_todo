@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<title>MyTodo</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+<script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+
+{% endblock head %}
+
+{% block content %}
+<div>
+    <div><strong>My Todo</strong></div>
+    {% for todo in mytodo_list %}
+        <div>
+            <a href={% url 'todo:detail' todo.id %}>{{ todo.name }}</a>
+            <a href="{% url 'todo:update' todo.id %}"><i class="fa fa-pencil"></i></a>
+            <a href="{% url 'todo:delete' todo.id %}"><i class="fa fa-trash"></i></a>
+        </div>
+    {% endfor %}
+
+</div>
+    <div><strong>Follow Todo</strong></div>
+        {% for todo in followtodo_list %}
+        <div>
+            <a href={% url 'todo:detail' todo.id %}>{{ todo.name }}, Owner: {{ todo.owner }}</a>
+        </div>
+        {% endfor %}
+<div>
+
+    
+</div>
+{% endblock content %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<title>ToDoDetail</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+<script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+
+{% endblock head %}
+
+{% block content %}
+
+
+<h1>
+    {{ object.name }}
+
+    {% if todo.owner == user %}
+    <a href="{% url 'todo:update' todo.id %}"><i class="fa fa-pencil"></i></a>
+    <a href="{% url 'todo:delete' todo.id %}"><i class="fa fa-trash"></i></a>
+    {% endif %}
+</h1>
+<div>
+    <i>Due Date: {{ object.due }}</i>
+</div>
+<div>
+    <i>Priority Level: {{ object.priority }}</i>
+</div>
+<div>
+    <i>{{ object.detail }}</i>
+</div>
+
+<div>
+    {% for parti in object.participants.values %}
+        <div>{{ parti.username }}</div>
+    {% empty %}
+        <div>No participant</div>
+    {% endfor %}
+</div>
+
+{% endblock content %}

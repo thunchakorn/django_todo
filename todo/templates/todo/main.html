@@ -28,24 +28,22 @@
         <option value="week">This week</option>
     </select>
 </div>
-<!-- {% for todo in object_list %}
-<div id="todo" onclick="location.href='#';" class="">
-    <div>{{ todo.name }}</div> 
-    <div id="due">{{ todo.due.date }}</div>
-</div>
-{% empty %}
-<div>Congrats, you have no Todo.</div>
-
-{% endfor %} -->
 
 <div id="todo-list">
-
 </div>
 
+<!-- Todo 
+1. followinng
+2. add Todo (create)
+3. my Todo (all Todo List)
+-->
 
-<p><a href="{% url 'logout' %}?next={% url 'todo:main' %}">Logout</a></p>
+
+<p>
+    <a href="{% url 'todo:mytodo' %}">My Todo</a>
+    <a href="{% url 'logout' %}?next={% url 'todo:main' %}">Logout</a>
+</p>
 {% else %}
-
 
 <p>Please <a href="{% url 'login' %}?next={% url 'todo:main' %}">Login</a> or <a href="#">Sign up</a></p>
 {% endif %}
