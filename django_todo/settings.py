@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'django_extensions',
+    'fontawesomefree',
 
     'home.apps.HomeConfig',
     'todo.apps.TodoConfig'
