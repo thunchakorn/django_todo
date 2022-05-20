@@ -91,4 +91,4 @@ class Participant(models.Model):
         unique_together = ('user', 'todo')
 
     def __str__(self) -> str:
-        return self.user + "->" + self.following_user
+        return f"{self.user} -> {self.todo}"
