@@ -3,15 +3,18 @@ from django.views.generic import CreateView, UpdateView, DeleteView, ListView, D
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+
 class OwnerListView(LoginRequiredMixin, ListView):
     """
     Sub-class the ListView to pass the request to the form.
     """
 
+
 class OwnerDetailView(LoginRequiredMixin, DetailView):
     """
     Sub-class the DetailView to pass the request to the form.
     """
+
 
 class OwnerCreateView(LoginRequiredMixin, CreateView):
     """
@@ -36,6 +39,7 @@ class OwnerUpdateView(LoginRequiredMixin, UpdateView):
     def get_queryset(self):
         qs = super().get_queryset()
         return qs.filter(owner=self.request.user)
+
 
 class OwnerDeleteView(LoginRequiredMixin, DeleteView):
     """

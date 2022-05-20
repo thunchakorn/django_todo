@@ -1,4 +1,3 @@
-from urllib import request
 from django.views import View
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -18,6 +17,7 @@ class MainView(View):
     def get(self, request):
         ctx = {'now': timezone.now()}
         return render(request, 'todo/main.html', ctx)
+
 
 class TodoList(LoginRequiredMixin, View):
 
@@ -43,6 +43,7 @@ class TodoList(LoginRequiredMixin, View):
             data = queryset.values()
             return JsonResponse({"todo_list": list(queryset)})
 
+
 class TodoListView(OwnerListView):
 
     model = Todo
@@ -58,6 +59,7 @@ class TodoListView(OwnerListView):
         ctx = {"mytodo_list": mytodo_list, "followtodo_list": followtodo_list}
         return render(request, self.template_name, ctx)
 
+
 class TodoDetailView(OwnerDetailView):
 
     model = Todo
@@ -65,6 +67,7 @@ class TodoDetailView(OwnerDetailView):
     def get_queryset(self):
         qs = super().get_queryset()
         return qs.filter(Q(is_public=True) | Q(owner=self.request.user))
+
 
 class TodoCreateView(OwnerCreateView):
 
@@ -77,6 +80,7 @@ class TodoCreateView(OwnerCreateView):
         "is_public"
     ]
 
+
 class TodoUpdateView(OwnerUpdateView):
 
     model = Todo
@@ -87,6 +91,7 @@ class TodoUpdateView(OwnerUpdateView):
         "priority",
         "is_public"
     ]
+
 
 class TodoDeleteView(OwnerDeleteView):
 
