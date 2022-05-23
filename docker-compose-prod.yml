@@ -7,7 +7,7 @@ services:
     ports:
       - 8000:8000
     env_file:
-      - .env
+      - ./.env.prod
       # - SECRET_KEY: ''
       # - DEBUG: 1
       # - ENVIRONMENT: 'development'
