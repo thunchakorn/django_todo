@@ -1,13 +1,12 @@
-FROM python:3.10.4-alpine
+FROM python:3.10.4-slim
 
 ARG USERNAME=user
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
 
-RUN addgroup --gid $USER_GID $USERNAME \
-    && adduser -u $USER_UID -G $USERNAME -S $USERNAME 
+RUN groupadd --gid $USER_GID $USERNAME \
+    && useradd -g $USERNAME $USERNAME 
 
-USER $USERNAME
 WORKDIR /app
 
 # Prevents Python from writing pyc files to disc (equivalent to python -B option)
@@ -16,13 +15,16 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 # install dependencies
-RUN pip install --upgrade pip
+RUN python -m pip install --upgrade pip
 COPY --chown=$USERNAME:$USERNAME ./requirements.txt .
-RUN pip install -r requirements.txt
+RUN python -m pip install -r requirements.txt
 
 # copy project
 COPY --chown=$USERNAME:$USERNAME . .
 
-RUN python manage.py collectstatic && \
-    python manage.py migrate
-    
+RUN python manage.py collectstatic --noinput && \
+    python manage.py migrate 
+
+RUN chown -R $USERNAME:$USERNAME /app
+
+USER $USERNAME
