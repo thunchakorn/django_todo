@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
   web:
-    build: ./app
+    build: .
     command: gunicorn django_todo.asgi:application -k uvicorn.workers.UvicornWorker
     ports:
       - 8000:8000
