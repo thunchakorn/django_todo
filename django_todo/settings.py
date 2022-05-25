@@ -129,7 +129,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 STATICFILES_FINDERS = [
@@ -143,12 +143,12 @@ STATICFILES_FINDERS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 if ENVIRONMENT == 'production':
-    SECURE_BROWSER_XSS_FILTER = True # Cross Site Scripting (XSS)
-    X_FRAME_OPTIONS = 'DENY' # Clickjacking
-    SECURE_SSL_REDIRECT = False # SSL HTTPS
+    SECURE_BROWSER_XSS_FILTER = True  # Cross Site Scripting (XSS)
+    X_FRAME_OPTIONS = 'DENY'  # Clickjacking
+    SECURE_SSL_REDIRECT = False  # SSL HTTPS
     SECURE_HSTS_SECONDS = 3600
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
-    SESSION_COOKIE_SECURE = True 
-    CSRF_COOKIE_SECURE = True # Cross-Site Request Forgery (CSRF)
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True  # Cross-Site Request Forgery (CSRF)
