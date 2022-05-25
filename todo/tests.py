@@ -1,10 +1,8 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
-from django.utils.timezone import now
+from django.utils.timezone import now, timedelta
 
 from todo.models import Priority, Todo  # ,Comment, Following, Participant
-
-from datetime import timedelta
 
 
 class TodoTest(TestCase):
